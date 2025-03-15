@@ -98,7 +98,7 @@
         }
         
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') no-repeat center center/cover;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
             height: 100vh;
             display: flex;
             align-items: center;
@@ -536,6 +536,15 @@
                     el.innerHTML = el.getAttribute(`data-${currentLang}`);
                 }
             });
+            
+            // Update currency symbols in the entire document based on language
+            document.querySelectorAll('.price-display').forEach(el => {
+                if (currentLang === 'id') {
+                    el.textContent = el.getAttribute('data-price-idr');
+                } else {
+                    el.textContent = el.getAttribute('data-price-usd');
+                }
+            });
         }
         
         document.addEventListener('DOMContentLoaded', function() {
@@ -595,7 +604,7 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="/api/placeholder/40/40" alt="ProMiddleman Logo">
+                    <img src="https://via.placeholder.com/40x40" alt="ProMiddleman Logo">
                     <span>ProMiddleman</span>
                 </div>
                 
@@ -717,10 +726,10 @@
                     </div>
                     
                     <ul class="pricing-features">
-                        <li data-id="Untuk transaksi hingga Rp5.000.000" data-en="For transactions up to IDR 5,000,000">Untuk transaksi hingga Rp5.000.000</li>
+                        <li data-id="Untuk transaksi hingga Rp5.000.000" data-en="For transactions up to $350">Untuk transaksi hingga Rp5.000.000</li>
                         <li data-id="Proses 1-2 hari kerja" data-en="Process within 1-2 business days">Proses 1-2 hari kerja</li>
                         <li data-id="Dukungan via chat" data-en="Support via chat">Dukungan via chat</li>
-                        <li data-id="Minimum fee Rp10.000" data-en="Minimum fee IDR 10,000">Minimum fee Rp10.000</li>
+                        <li data-id="Minimum fee Rp10.000" data-en="Minimum fee $0.70">Minimum fee Rp10.000</li>
                     </ul>
                     
                     <div class="pricing-footer">
@@ -736,7 +745,7 @@
                     </div>
                     
                     <ul class="pricing-features">
-                        <li data-id="Untuk transaksi Rp5.000.000 - Rp50.000.000" data-en="For transactions IDR 5,000,000 - IDR 50,000,000">Untuk transaksi Rp5.000.000 - Rp50.000.000</li>
+                        <li data-id="Untuk transaksi Rp5.000.000 - Rp50.000.000" data-en="For transactions $350 - $3,500">Untuk transaksi Rp5.000.000 - Rp50.000.000</li>
                         <li data-id="Proses dalam 24 jam" data-en="Process within 24 hours">Proses dalam 24 jam</li>
                         <li data-id="Dukungan via telepon" data-en="Support via phone">Dukungan via telepon</li>
                         <li data-id="Sertifikat transaksi" data-en="Transaction certificate">Sertifikat transaksi</li>
@@ -755,7 +764,7 @@
                     </div>
                     
                     <ul class="pricing-features">
-                        <li data-id="Untuk transaksi di atas Rp50.000.000" data-en="For transactions above IDR 50,000,000">Untuk transaksi di atas Rp50.000.000</li>
+                        <li data-id="Untuk transaksi di atas Rp50.000.000" data-en="For transactions above $3,500">Untuk transaksi di atas Rp50.000.000</li>
                         <li data-id="Proses prioritas" data-en="Priority processing">Proses prioritas</li>
                         <li data-id="Dukungan 24/7" data-en="24/7 support">Dukungan 24/7</li>
                         <li data-id="Perlindungan ekstra & asuransi" data-en="Extra protection & insurance">Perlindungan ekstra & asuransi</li>
@@ -781,7 +790,7 @@
                     <div class="testimonial-content" data-id="Sudah 3x pakai jasa rekber ProMiddleman untuk transaksi marketplace dan selalu lancar. Prosesnya cepat dan CS-nya ramah. Recommended banget!" data-en="I've used ProMiddleman's escrow service 3 times for marketplace transactions and it's always smooth. The process is fast and their customer service is friendly. Highly recommended!">Sudah 3x pakai jasa rekber ProMiddleman untuk transaksi marketplace dan selalu lancar. Prosesnya cepat dan CS-nya ramah. Recommended banget!</div>
                     
                     <div class="testimonial-author">
-                        <img src="/api/placeholder/50/50" alt="User">
+                        <img src="https://via.placeholder.com/50x50" alt="User">
                         <div class="author-details">
                             <h4>Budi Santoso</h4>
                             <p data-id="Pembeli di Tokedia" data-en="Buyer on Tokedia">Pembeli di Tokedia</p>
@@ -793,7 +802,7 @@
                     <div class="testimonial-content" data-id="Sebagai seller, ProMiddleman sangat membantu menumbuhkan kepercayaan buyer. Fee-nya juga masuk akal. Pencairan dana cepat setelah buyer konfirmasi." data-en="As a seller, ProMiddleman really helps build buyer trust. The fee is also reasonable. Quick disbursement after buyer confirmation.">Sebagai seller, ProMiddleman sangat membantu menumbuhkan kepercayaan buyer. Fee-nya juga masuk akal. Pencairan dana cepat setelah buyer konfirmasi.</div>
                     
                     <div class="testimonial-author">
-                        <img src="/api/placeholder/50/50" alt="User">
+                        <img src="https://via.placeholder.com/50x50" alt="User">
                         <div class="author-details">
                             <h4>Siti Rahma</h4>
                             <p data-id="Penjual Properti" data-en="Property Seller">Penjual Properti</p>
@@ -805,7 +814,7 @@
                     <div class="testimonial-content" data-id="Transaksi jual beli akun game senilai puluhan juta rupiah berhasil dengan aman dan lancar. Terima kasih ProMiddleman, jadi tenang tanpa was-was!" data-en="Transaction for a game account worth tens of millions of rupiah was successful, safe, and smooth. Thank you ProMiddleman, giving me peace of mind without worry!">Transaksi jual beli akun game senilai puluhan juta rupiah berhasil dengan aman dan lancar. Terima kasih ProMiddleman, jadi tenang tanpa was-was!</div>
                     
                     <div class="testimonial-author">
-                        <img src="/api/placeholder/50/50" alt="User">
+                        <img src="https://via.placeholder.com/50x50" alt="User">
                         <div class="author-details">
                             <h4>Reza Gunawan</h4>
                             <p data-id="Gamer & Kolektor" data-en="Gamer & Collector">Gamer & Kolektor</p>
@@ -927,7 +936,7 @@
     <footer>
         <div class="container">
             <div class="logo">
-                <img src="/api/placeholder/40/40" alt="ProMiddleman Logo">
+                <img src="https://via.placeholder.com/40x40" alt="ProMiddleman Logo">
                 <span>ProMiddleman</span>
             </div>
             

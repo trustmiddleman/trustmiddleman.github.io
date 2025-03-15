@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProMiddleman - Jasa Rekber Terpercaya</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --danger-color: #e74c3c;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 20px;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--light-color);
+        }
+        
+        .language-selector {
+            background: rgba(255,255,255,0.2);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-selector img {
+            width: 20px;
+            margin-right: 5px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/600') no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin-top: 60px;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark-color);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #777;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .how-it-works {
+            background-color: var(--light-color);
+        }
+        
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            counter-reset: step-counter;
+        }
+        
+        .step {
+            position: relative;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            counter-increment: step-counter;
+        }
+        
+        .step::before {
+            content: counter(step-counter);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        
+        .pricing {
+            text-align: center;
+        }
+        
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .pricing-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .pricing-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+        }
+        
+        .popular .pricing-header {
+            background-color: var(--secondary-color);
+        }
+        
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        
+        .pricing-features {
+            padding: 20px;
+            list-style: none;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-footer {
+            padding: 20px;
+        }
+        
+        .testimonials {
+            background-color: var(--light-color);
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        
+        .author-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-details p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+        
+        .faq .container {
+            max-width: 800px;
+        }
+        
+        .accordion {
+            margin-bottom: 15px;
+        }
+        
+        .accordion-header {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .accordion-content {
+            background-color: white;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            border-radius: 0 0 5px 5px;
+            margin-top: -5px;
+        }
+        
+        .accordion-content.active {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        .contact {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-method {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .contact-method:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .contact-method h3 {
+            margin-bottom: 10px;
+        }
+        
+        .contact-method a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-method a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+        
+        .copyright {
+            margin-top: 20px;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher Script -->
+    <script>
+        let currentLang = 'id'; // Default language
+        
+        function toggleLanguage() {
+            currentLang = currentLang === 'id' ? 'en' : 'id';
+            updateContent();
+        }
+        
+        function updateContent() {
+            const elements = document.querySelectorAll('[data-id], [data-en]');
+            elements.forEach(el => {
+                if (el.getAttribute(`data-${currentLang}`)) {
+                    el.innerHTML = el.getAttribute(`data-${currentLang}`);
+                }
+            });
+            
+            // Update language flag
+            document.getElementById('lang-img').src = currentLang === 'id' ? 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/id.svg' : 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/gb.svg';
+            document.getElementById('lang-text').innerText = currentLang === 'id' ? 'ID' : 'EN';
+        }
+        
+        document.addEventListener('DOMContentLoaded', updateContent);
+    </script>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="/api/placeholder/40/40" alt="ProMiddleman Logo">
+                    <span>ProMiddleman</span>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="#home" data-id="Beranda" data-en="Home">Beranda</a></li>
+                    <li><a href="#services" data-id="Layanan" data-en="Services">Layanan</a></li>
+                    <li><a href="#how-it-works" data-id="Cara Kerja" data-en="How It Works">Cara Kerja</a></li>
+                    <li><a href="#pricing" data-id="Biaya" data-en="Pricing">Biaya</a></li>
+                    <li><a href="#faq" data-id="FAQ" data-en="FAQ">FAQ</a></li>
+                    <li><a href="#contact" data-id="Kontak" data-en="Contact">Kontak</a></li>
+                    <li>
+                        <div class="language-selector" onclick="toggleLanguage()">
+                            <img id="lang-img" src="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/flags/4x3/id.svg" alt="Language">
+                            <span id="lang-text">ID</span>
+                        </div>
+                    </li>
+                </ul>
+                
+                <div class="mobile-menu">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-id="Jasa Rekber Terpercaya untuk Transaksi Online Anda" data-en="Trusted Escrow Service for Your Online Transactions">Jasa Rekber Terpercaya untuk Transaksi Online Anda</h1>
+                <p data-id="Kami menjembatani penjual dan pembeli untuk transaksi yang aman, nyaman, dan terpercaya" data-en="We bridge sellers and buyers for safe, convenient, and trusted transactions">Kami menjembatani penjual dan pembeli untuk transaksi yang aman, nyaman, dan terpercaya</p>
+                <a href="#contact" class="btn btn-primary" data-id="Mulai Sekarang" data-en="Get Started">Mulai Sekarang</a>
+                <a href="#how-it-works" class="btn btn-secondary" data-id="Pelajari Lebih Lanjut" data-en="Learn More">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Layanan Kami" data-en="Our Services">Layanan Kami</h2>
+                <p data-id="Berbagai layanan rekber untuk kebutuhan transaksi Anda" data-en="Various escrow services for your transaction needs">Berbagai layanan rekber untuk kebutuhan transaksi Anda</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <h3 data-id="Rekber Marketplace" data-en="Marketplace Escrow">Rekber Marketplace</h3>
+                    <p data-id="Layanan rekber untuk transaksi jual beli barang fisik di marketplace atau forum jual beli online." data-en="Escrow service for physical goods transactions in marketplaces or online buying and selling forums.">Layanan rekber untuk transaksi jual beli barang fisik di marketplace atau forum jual beli online.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3 data-id="Rekber Digital" data-en="Digital Escrow">Rekber Digital</h3>
+                    <p data-id="Layanan rekber untuk transaksi digital seperti domain, website, akun game, dan produk digital lainnya." data-en="Escrow service for digital transactions such as domains, websites, game accounts, and other digital products.">Layanan rekber untuk transaksi digital seperti domain, website, akun game, dan produk digital lainnya.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h3 data-id="Rekber Properti" data-en="Property Escrow">Rekber Properti</h3>
+                    <p data-id="Layanan rekber untuk transaksi properti dengan nilai tinggi yang membutuhkan keamanan dan kepercayaan lebih." data-en="Escrow service for high-value property transactions that require more security and trust.">Layanan rekber untuk transaksi properti dengan nilai tinggi yang membutuhkan keamanan dan kepercayaan lebih.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Cara Kerja" data-en="How It Works">Cara Kerja</h2>
+                <p data-id="Proses transaksi yang aman dan transparan dengan ProMiddleman" data-en="Safe and transparent transaction process with ProMiddleman">Proses transaksi yang aman dan transparan dengan ProMiddleman</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step">
+                    <h3 data-id="Pendaftaran" data-en="Registration">Pendaftaran</h3>
+                    <p data-id="Pembeli dan penjual mendaftar transaksi di ProMiddleman dengan menyertakan detail transaksi." data-en="Buyer and seller register the transaction on ProMiddleman with transaction details.">Pembeli dan penjual mendaftar transaksi di ProMiddleman dengan menyertakan detail transaksi.</p>
+                </div>
+                
+                <div class="step">
+                    <h3 data-id="Pembayaran" data-en="Payment">Pembayaran</h3>
+                    <p data-id="Pembeli mentransfer dana ke rekening ProMiddleman dan kami mengkonfirmasi dana telah diterima." data-en="The buyer transfers funds to ProMiddleman's account and we confirm the funds have been received.">Pembeli mentransfer dana ke rekening ProMiddleman dan kami mengkonfirmasi dana telah diterima.</p>
+                </div>
+                
+                <div class="step">
+                    <h3 data-id="Pengiriman" data-en="Shipping">Pengiriman</h3>
+                    <p data-id="Penjual mengirimkan barang ke pembeli setelah dikonfirmasi dana telah masuk ke rekening ProMiddleman." data-en="The seller ships the goods to the buyer after confirmation that the funds have entered ProMiddleman's account.">Penjual mengirimkan barang ke pembeli setelah dikonfirmasi dana telah masuk ke rekening ProMiddleman.</p>
+                </div>
+                
+                <div class="step">
+                    <h3 data-id="Konfirmasi" data-en="Confirmation">Konfirmasi</h3>
+                    <p data-id="Pembeli mengkonfirmasi telah menerima barang dalam kondisi baik sesuai kesepakatan." data-en="The buyer confirms they have received the goods in good condition as agreed.">Pembeli mengkonfirmasi telah menerima barang dalam kondisi baik sesuai kesepakatan.</p>
+                </div>
+                
+                <div class="step">
+                    <h3 data-id="Pencairan" data-en="Disbursement">Pencairan</h3>
+                    <p data-id="ProMiddleman mentransfer dana ke rekening penjual setelah konfirmasi dari pembeli." data-en="ProMiddleman transfers funds to the seller's account after confirmation from the buyer.">ProMiddleman mentransfer dana ke rekening penjual setelah konfirmasi dari pembeli.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Biaya Layanan" data-en="Service Fees">Biaya Layanan</h2>
+                <p data-id="Biaya terjangkau untuk keamanan transaksi Anda" data-en="Affordable fees for your transaction security">Biaya terjangkau untuk keamanan transaksi Anda</p>
+            </div>
+            
+            <div class="pricing-plans">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 data-id="Paket Standar" data-en="Standard Package">Paket Standar</h3>
+                        <div class="price">0.5%</div>
+                        <p data-id="dari nilai transaksi" data-en="of transaction value">dari nilai transaksi</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li data-id="Untuk transaksi hingga Rp5.000.000" data-en="For transactions up to IDR 5,000,000">Untuk transaksi hingga Rp5.000.000</li>
+                        <li data-id="Proses 1-2 hari kerja" data-en="Process within 1-2 business days">Proses 1-2 hari kerja</li>
+                        <li data-id="Dukungan via chat" data-en="Support via chat">Dukungan via chat</li>
+                        <li data-id="Minimum fee Rp10.000" data-en="Minimum fee IDR 10,000">Minimum fee Rp10.000</li>
+                    </ul>
+                    
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-primary" data-id="Pilih Paket" data-en="Choose Plan">Pilih Paket</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="pricing-header">
+                        <h3 data-id="Paket Premium" data-en="Premium Package">Paket Premium</h3>
+                        <div class="price">0.3%</div>
+                        <p data-id="dari nilai transaksi" data-en="of transaction value">dari nilai transaksi</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li data-id="Untuk transaksi Rp5.000.000 - Rp50.000.000" data-en="For transactions IDR 5,000,000 - IDR 50,000,000">Untuk transaksi Rp5.000.000 - Rp50.000.000</li>
+                        <li data-id="Proses dalam 24 jam" data-en="Process within 24 hours">Proses dalam 24 jam</li>
+                        <li data-id="Dukungan via telepon" data-en="Support via phone">Dukungan via telepon</li>
+                        <li data-id="Sertifikat transaksi" data-en="Transaction certificate">Sertifikat transaksi</li>
+                    </ul>
+                    
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-secondary" data-id="Pilih Paket" data-en="Choose Plan">Pilih Paket</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 data-id="Paket VIP" data-en="VIP Package">Paket VIP</h3>
+                        <div class="price">0.2%</div>
+                        <p data-id="dari nilai transaksi" data-en="of transaction value">dari nilai transaksi</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li data-id="Untuk transaksi di atas Rp50.000.000" data-en="For transactions above IDR 50,000,000">Untuk transaksi di atas Rp50.000.000</li>
+                        <li data-id="Proses prioritas" data-en="Priority processing">Proses prioritas</li>
+                        <li data-id="Dukungan 24/7" data-en="24/7 support">Dukungan 24/7</li>
+                        <li data-id="Perlindungan ekstra & asuransi" data-en="Extra protection & insurance">Perlindungan ekstra & asuransi</li>
+                    </ul>
+                    
+                    <div class="pricing-footer">
+                        <a href="#contact" class="btn btn-primary" data-id="Pilih Paket" data-en="Choose Plan">Pilih Paket</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Testimoni Pengguna" data-en="User Testimonials">Testimoni Pengguna</h2>
+                <p data-id="Apa kata mereka tentang layanan kami" data-en="What they say about our service">Apa kata mereka tentang layanan kami</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content" data-id="Sudah 3x pakai jasa rekber ProMiddleman untuk transaksi marketplace dan selalu lancar. Prosesnya cepat dan CS-nya ramah. Recommended banget!" data-en="I've used ProMiddleman's escrow service 3 times for marketplace transactions and it's always smooth. The process is fast and their customer service is friendly. Highly recommended!">Sudah 3x pakai jasa rekber ProMiddleman untuk transaksi marketplace dan selalu lancar. Prosesnya cepat dan CS-nya ramah. Recommended banget!</div>
+                    
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/50/50" alt="User">
+                        <div class="author-details">
+                            <h4>Budi Santoso</h4>
+                            <p data-id="Pembeli di Tokedia" data-en="Buyer on Tokedia">Pembeli di Tokedia</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content" data-id="Sebagai seller, ProMiddleman sangat membantu menumbuhkan kepercayaan buyer. Fee-nya juga masuk akal. Pencairan dana cepat setelah buyer konfirmasi." data-en="As a seller, ProMiddleman really helps build buyer trust. The fee is also reasonable. Quick disbursement after buyer confirmation.">Sebagai seller, ProMiddleman sangat membantu menumbuhkan kepercayaan buyer. Fee-nya juga masuk akal. Pencairan dana cepat setelah buyer konfirmasi.</div>
+                    
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/50/50" alt="User">
+                        <div class="author-details">
+                            <h4>Siti Rahma</h4>
+                            <p data-id="Penjual Properti" data-en="Property Seller">Penjual Properti</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content" data-id="Transaksi jual beli akun game senilai puluhan juta rupiah berhasil dengan aman dan lancar. Terima kasih ProMiddleman, jadi tenang tanpa was-was!" data-en="Transaction for a game account worth tens of millions of rupiah was successful, safe, and smooth. Thank you ProMiddleman, giving me peace of mind without worry!">Transaksi jual beli akun game senilai puluhan juta rupiah berhasil dengan aman dan lancar. Terima kasih ProMiddleman, jadi tenang tanpa was-was!</div>
+                    
+                    <div class="testimonial-author">
+                        <img src="/api/placeholder/50/50" alt="User">
+                        <div class="author-details">
+                            <h4>Reza Gunawan</h4>
+                            <p data-id="Gamer & Kolektor" data-en="Gamer & Collector">Gamer & Kolektor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Pertanyaan Umum" data-en="Frequently Asked Questions">Pertanyaan Umum</h2>
+                <p data-id="Jawaban untuk pertanyaan yang sering ditanyakan" data-en="Answers to commonly asked questions">Jawaban untuk pertanyaan yang sering ditanyakan</p>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.nextElementSibling.classList.toggle('active')">
+                    <span data-id="Apa itu jasa rekber atau escrow?" data-en="What is an escrow service?">Apa itu jasa rekber atau escrow?</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p data-id="Rekber (Rekening Bersama) atau escrow adalah layanan pihak ketiga yang menjadi perantara dalam transaksi jual beli. Rekber menyimpan dana pembeli hingga barang diterima dalam kondisi baik, kemudian meneruskan dana tersebut ke penjual. Ini membantu mengurangi risiko penipuan dalam transaksi online." data-en="Escrow is a third-party service that acts as an intermediary in buying and selling transactions. Escrow holds the buyer's funds until the goods are received in good condition, then forwards the funds to the seller. This helps reduce the risk of fraud in online transactions.">Rekber (Rekening Bersama) atau escrow adalah layanan pihak ketiga yang menjadi perantara dalam transaksi jual beli. Rekber menyimpan dana pembeli hingga barang diterima dalam kondisi baik, kemudian meneruskan dana tersebut ke penjual. Ini membantu mengurangi risiko penipuan dalam transaksi online.</p>
+                </div>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.nextElementSibling.classList.toggle('active')">
+                    <span data-id="Bagaimana jika barang yang diterima tidak sesuai atau rusak?" data-en="What if the received item is not as described or damaged?">Bagaimana jika barang yang diterima tidak sesuai atau rusak?</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p data-id="Jika barang yang diterima tidak sesuai atau rusak, Anda dapat mengajukan komplain dalam waktu 2x24 jam setelah menerima barang. Tim kami akan melakukan mediasi antara Anda dan penjual untuk mencapai kesepakatan. Jika terbukti barang tidak sesuai, dana dapat dikembalikan ke pembeli atau dilakukan pengiriman ulang." data-en="If the received item is not as described or damaged, you can file a complaint within 48 hours after receiving the item. Our team will mediate between you and the seller to reach an agreement. If it is proven that the item is not as described, the funds can be returned to the buyer or a re-shipment can be arranged.">Jika barang yang diterima tidak sesuai atau rusak, Anda dapat mengajukan komplain dalam waktu 2x24 jam setelah menerima barang. Tim kami akan melakukan mediasi antara Anda dan penjual untuk mencapai kesepakatan. Jika terbukti barang tidak sesuai, dana dapat dikembalikan ke pembeli atau dilakukan pengiriman ulang.</p>
+                </div>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.nextElementSibling.classList.toggle('active')">
+                    <span data-id="Berapa lama proses pencairan dana ke penjual?" data-en="How long does it take to disburse funds to the seller?">Berapa lama proses pencairan dana ke penjual?</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p data-id="Setelah pembeli mengkonfirmasi penerimaan barang dalam kondisi baik, pencairan dana ke rekening penjual dilakukan dalam 1x24 jam (hari kerja). Untuk paket Premium dan VIP, proses dapat lebih cepat hingga beberapa jam saja." data-en="After the buyer confirms receipt of the goods in good condition, disbursement to the seller's account is made within 24 hours (business days). For Premium and VIP packages, the process can be faster, down to just a few hours.">Setelah pembeli mengkonfirmasi penerimaan barang dalam kondisi baik, pencairan dana ke rekening penjual dilakukan dalam 1x24 jam (hari kerja). Untuk paket Premium dan VIP, proses dapat lebih cepat hingga beberapa jam saja.</p>
+                </div>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.nextElementSibling.classList.toggle('active')">
+                    <span data-id="Apakah ProMiddleman legal?" data-en="Is ProMiddleman legal?">Apakah ProMiddleman legal?</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p data-id="Ya, ProMiddleman adalah badan usaha yang telah terdaftar secara resmi dengan izin usaha yang sah. Kami beroperasi sesuai dengan peraturan perundang-undangan yang berlaku di Indonesia dan memiliki sistem keamanan yang memenuhi standar industri. Seluruh transaksi juga tercatat dan terenkripsi dengan aman." data-en="Yes, ProMiddleman is an officially registered business entity with valid business permits. We operate in accordance with applicable laws and regulations in Indonesia and have security systems that meet industry standards. All transactions are also securely recorded and encrypted.">Ya, ProMiddleman adalah badan usaha yang telah terdaftar secara resmi dengan izin usaha yang sah. Kami beroperasi sesuai dengan peraturan perundang-undangan yang berlaku di Indonesia dan memiliki sistem keamanan yang memenuhi standar industri. Seluruh transaksi juga tercatat dan terenkripsi dengan aman.</p>
+                </div>
+            </div>
+            
+            <div class="accordion">
+                <div class="accordion-header" onclick="this.nextElementSibling.classList.toggle('active')">
+                    <span data-id="Metode pembayaran apa saja yang diterima?" data-en="What payment methods are accepted?">Metode pembayaran apa saja yang diterima?</span>
+                    <span>+</span>
+                </div>
+                <div class="accordion-content">
+                    <p data-id="Kami menerima pembayaran melalui transfer bank (BCA, Mandiri, BNI, BRI), e-wallet (GoPay, OVO, DANA, LinkAja), dan virtual account. Untuk transaksi dengan nilai besar, kami menyarankan menggunakan transfer bank untuk kenyamanan dan keamanan." data-en="We accept payments via bank transfer (BCA, Mandiri, BNI, BRI), e-wallets (GoPay, OVO, DANA, LinkAja), and virtual accounts. For high-value transactions, we recommend using bank transfers for convenience and security.">Kami menerima pembayaran melalui transfer bank (BCA, Mandiri, BNI, BRI), e-wallet (GoPay, OVO, DANA, LinkAja), dan virtual account. Untuk transaksi dengan nilai besar, kami menyarankan menggunakan transfer bank untuk kenyamanan dan keamanan.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-id="Hubungi Kami" data-en="Contact Us">Hubungi Kami</h2>
+                <p data-id="Tim kami siap membantu Anda 7 hari seminggu" data-en="Our team is ready to help you 7 days a week">Tim kami siap membantu Anda 7 hari seminggu</p>
+            </div>
+            
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <div class="contact-icon">📱</div>
+                    <h3 data-id="WhatsApp" data-en="WhatsApp">WhatsApp</h3>
+                    <p><a href="https://wa.me/6281234567890">+62 812-3456-7890</a></p>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">📧</div>
+                    <h3 data-id="Email" data-en="Email">Email</h3>
+                    <p><a href="mailto:info@promiddleman.com">info@promiddleman.com</a></p>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">💬</div>
+                    <h3 data-id="Live Chat" data-en="Live Chat">Live Chat</h3>
+                    <p data-id="Tersedia 09.00 - 21.00 WIB" data-en="Available 09.00 - 21.00 WIB">Tersedia 09.00 - 21.00 WIB</p>
+                </div>
+                
+                <div class="contact-method">
+                    <div class="contact-icon">📝</div>
+                    <h3 data-id="Form Pendaftaran" data-en="Registration Form">Form Pendaftaran</h3>
+                    <p><a href="#" data-id="Klik di sini" data-en="Click here">Klik di sini</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <img src="/api/placeholder/40/40" alt="ProMiddleman Logo">
+                <span>ProMiddleman</span>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#" data-id="Tentang Kami" data-en="About Us">Tentang Kami</a>
+                <a href="#" data-id="Syarat & Ketentuan" data-en="Terms & Conditions">Syarat & Ketentuan</a>
+                <a href="#" data-id="Kebijakan Privasi" data-en="Privacy Policy">Kebijakan Privasi</a>
+                <a href="#" data-id="Blog" data-en="Blog">Blog</a>
+                <a href="#" data-id="Karir" data-en="Careers">Karir</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📸</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="YouTube">🎬</a>
+            </div>
+            
+            <p class="copyright" data-id="© 2025 ProMiddleman. Hak Cipta Dilindungi." data-en="© 2025 ProMiddleman. All Rights Reserved.">© 2025 ProMiddleman. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    
+                    // Change the plus/minus sign
+                    const sign = this.querySelector('span:last-child');
+                    sign.textContent = sign.textContent === '+' ? '-' : '+';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
